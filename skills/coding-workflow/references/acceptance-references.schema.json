@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["acceptance_references"],
+  "properties": {
+    "acceptance_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["acceptance_reference_id", "owner", "reviewer", "version", "status", "source", "source_digest", "frozen_at", "coverage", "known_gaps"],
+        "properties": {
+          "acceptance_reference_id": {"type": "string", "minLength": 1},
+          "owner": {"type": "string", "minLength": 1},
+          "reviewer": {"type": "string", "minLength": 1},
+          "version": {"type": "string", "minLength": 1},
+          "status": {"enum": ["draft", "reviewed", "frozen", "active", "stale", "superseded"]},
+          "source": {"type": "string", "minLength": 1},
+          "source_digest": {"type": "string", "minLength": 1},
+          "frozen_at": {"type": "string", "minLength": 1},
+          "coverage": {"type": "array", "items": {"type": "string"}},
+          "known_gaps": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

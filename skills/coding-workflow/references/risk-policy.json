@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "rules": {
+    "deep_engineering": ["external_write", "production_target", "sensitive_data", "irreversible_effect", "live_data_migration", "security_boundary_change"],
+    "standard_engineering": ["intended_reuse", "compatibility_change", "integration", "public_api_change", "behavior_change", "persistent_state", "concurrency", "permissions", "migration", "retry_semantics"],
+    "standard_product": ["user_decision_surface", "trust_sensitive_output", "semantic_input", "multi_step_interaction", "cross_view_state", "long_term_use_claim"],
+    "deep_product": ["authorization_boundary", "irreversible_user_expectation"],
+    "recovery_threshold": 3,
+    "product_standard_threshold": 1
+  },
+  "signal_meanings": {
+    "external_write": "The requested action performs a consequential write to an external system, rather than implementing code for later execution.",
+    "production_target": "The requested action changes or operates a live production target.",
+    "sensitive_data": "The action handles real sensitive data with material exposure risk, rather than synthetic fixtures.",
+    "live_data_migration": "The action migrates live data; local migration implementation alone is standard.",
+    "security_boundary_change": "The change materially alters access, trust, isolation, or authorization guarantees.",
+    "authorization_boundary": "Actual authority separation or delegation is materially affected, rather than merely displayed in a mockup.",
+    "irreversible_user_expectation": "The behavior makes a consequential commitment that users cannot readily reverse."
+  }
+}

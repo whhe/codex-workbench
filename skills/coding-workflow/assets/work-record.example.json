@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "work_id": "example",
+  "raw_request": "Implement one bounded change",
+  "outcome": "Requested behavior passes independent acceptance",
+  "scope": {
+    "in": [],
+    "out": []
+  },
+  "actors": [],
+  "primary_loop": "",
+  "semantics": [],
+  "states": [],
+  "transitions": [],
+  "invariants": [],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "type": "fact",
+      "statement": "Artifact exists"
+    }
+  ],
+  "acceptance": [
+    {
+      "claim_id": "C1",
+      "acceptance_reference_id": "O1"
+    }
+  ],
+  "risk": {
+    "mode": "standard",
+    "dimensions": {},
+    "reasons": []
+  },
+  "evidence_index": {},
+  "completion_requirements": {
+    "artifact": {
+      "required": true,
+      "status": "not_run",
+      "claims": [
+        "C1"
+      ]
+    }
+  },
+  "authority": {
+    "required": false,
+    "authorized": false,
+    "scope": []
+  },
+  "decisions": [],
+  "recovery": {
+    "failed_fix_count": 0,
+    "status": "inactive"
+  },
+  "acceptance_references": []
+}
