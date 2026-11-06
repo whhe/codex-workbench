@@ -1,0 +1,59 @@
+{
+  "skills": [
+    {
+      "name": "code-review",
+      "path": "skills/code-review",
+      "source": "whhe/codex-workbench"
+    },
+    {
+      "name": "coding-workflow",
+      "path": "skills/coding-workflow",
+      "source": "whhe/codex-workbench"
+    },
+    {
+      "name": "skill-conventions",
+      "path": "skills/skill-conventions",
+      "source": "whhe/codex-workbench"
+    },
+    {
+      "name": "find-skills",
+      "source": "vercel-labs/skills"
+    },
+    {
+      "name": "codebase-design",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "handoff",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "writing-for-agents",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "grill-me",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "grilling",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "domain-modeling",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "teach",
+      "source": "mattpocock/skills"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+# Portable preferences captured 2026-11-06. Review model availability and execution permissions before use.
+# Merge only missing, compatible keys; preserve every existing local value.
+
+# Model and execution preferences: check availability and suitability before adding.
+service_tier = "default"
+approval_policy = "never"
+approvals_reviewer = "user"
+sandbox_mode = "danger-full-access"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+# Optional desktop preferences: add only keys supported by the target client.
+[desktop]
+followUpQueueMode = "steer"
+keepRemoteControlAwakeWhilePluggedIn = true
+default-workspace-full-view = true
+open-link-in-target-preference = "external-browser"
+open-local-url-in-target-preference = "external-browser"
+worktree-upstream-refresh-mode = "best-effort"
+preventSleepWhileRunning = true
+appearanceTheme = "dark"
