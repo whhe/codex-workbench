@@ -11,6 +11,11 @@
       "source": "whhe/codex-workbench"
     },
     {
+      "name": "design-review",
+      "path": "skills/design-review",
+      "source": "whhe/codex-workbench"
+    },
+    {
       "name": "skill-conventions",
       "path": "skills/skill-conventions",
       "source": "whhe/codex-workbench"

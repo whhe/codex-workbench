@@ -8,6 +8,7 @@ Reusable skills for everyday coding work, plus a portable bundle of my personal 
 |---|---|
 | [code-review](skills/code-review/SKILL.md) | Review code and report concrete problems with supporting evidence |
 | [coding-workflow](skills/coding-workflow/SKILL.md) | Implement features, debug problems, verify changes and handle Git or PR/MR work |
+| [design-review](skills/design-review/SKILL.md) | Clarify design choices, develop proposals and challenge them through independent subagent reviews |
 | [skill-conventions](skills/skill-conventions/SKILL.md) | Create and maintain clear, reusable skill packages |
 
 ## Install a skill
@@ -17,6 +18,7 @@ With Node.js and npm installed, run the command for the skill you want. Each com
 ```sh
 npx skills add whhe/codex-workbench --skill code-review --global --agent codex
 npx skills add whhe/codex-workbench --skill coding-workflow --global --agent codex
+npx skills add whhe/codex-workbench --skill design-review --global --agent codex
 npx skills add whhe/codex-workbench --skill skill-conventions --global --agent codex
 ```
 
@@ -28,7 +30,15 @@ Or:
 
 > Use $coding-workflow to review this project, fix the problems found and verify the result.
 
-Installing a skill does not apply my personal environment settings. If installation or discovery fails, ask Codex to inspect the setup and explain what is missing. `coding-workflow` needs subagent support for its independent reviews; ask Codex to check compatibility before relying on it.
+Or:
+
+> Use $design-review to propose an approach for this feature and challenge it with independent reviewers.
+
+For a deeper design discussion:
+
+> Use $design-review to question the important design choices first, then propose and independently review an approach.
+
+Installing a skill does not apply my personal environment settings. If installation or discovery fails, ask Codex to inspect the setup and explain what is missing. `coding-workflow` and `design-review` need subagent support for their independent reviews; ask Codex to check compatibility before relying on them.
 
 ## Bring the environment to another computer
 
