@@ -1,15 +1,22 @@
 ---
 name: "code-review"
-description: "Perform independent read-only adversarial code review with risk-priority checks and evidence-backed findings. Use for reviewing changes, assessing merge readiness, or as a fresh reviewer in a coding-workflow subagent round; return findings and coverage without implementing fixes or publishing."
+description: "Review code with risk-priority checks and evidence-backed findings, read-only by default. Use for reviewing changes, assessing merge readiness, or as an independent reviewer. When the user explicitly requests fixes, route execution to coding-workflow and keep each review round read-only."
 ---
 
-IRON LAW: Review read-only and report only evidence-backed findings; never fix code, commit, push, reply remotely, or trigger automation.
+IRON LAW: Keep the reviewer read-only; only the executing coordinator may route explicitly authorized fixes to coding-workflow, which owns the single review/fix loop.
 
 # Code Review — Risk-Priority with Proportional Verification
 
+## Request Routing
+
+- A direct review request is read-only by default. Return findings, coverage and limitations; the report can be complete while defects remain.
+- A direct user request to review and fix authorizes the executing coordinator to resolve the required `coding-workflow` skill through the available catalog and load it for implementation. Pass the original request, confirmed scope, frozen baseline, current change and findings into its planning, verification and single review/fix gate. Completion requires a fresh complete review with no new valid in-scope issues, all earlier valid in-scope issues at every severity closed, and required checks passed.
+- Load this dependency only for authorized implementation: it supplies the plan gate, fix execution and repeat-review orchestration. If unavailable, return any useful read-only review and explicitly report fixes incomplete; do not substitute a second loop or install a dependency silently. Existing commit, push, remote-update and publication permissions still apply.
+- When invoked as a reviewer subagent, remain on the read-only path even if the original request mentions fixes. Return to the executing parent without calling the workflow or spawning another reviewer. The workflow selects review specialists without requiring this named skill; this route creates no reverse orchestration dependency.
+
 ## Read-Only Contract
 
-This skill owns review methods and findings only. The executing parent owns fixes and any repeat-review loop. When invoked by a subagent, remain read-only and return findings to that parent; never delegate back to the parent workflow or start a fix loop. For a direct request that includes implementation, the executing assistant must use the coding workflow for the implementation portion and pass review work here as a read-only task. This does not expand the reviewer's authority.
+This skill owns review methods and findings only. The executing parent owns fixes and any repeat-review loop. When invoked by a subagent, remain read-only and return findings to that parent; never delegate back to the parent workflow or start a fix loop. For a direct request that includes implementation, the executing coordinator follows Request Routing and passes each review round here as a read-only task. This does not expand the reviewer's authority.
 
 Inspect code, diff, context and existing evidence. Do not execute project code or tests in the reviewed checkout if they can mutate it. Use supplied verification evidence, read-only analysis, or explicitly authorized isolated checks without publication credentials; report checks that remain unverified. Review output belongs in the conversation or an explicitly requested external report artifact, not an unsolicited tracking file in the repository.
 
@@ -19,6 +26,7 @@ Do not guess missing requirements, behavior or facts. Investigate available auth
 
 ## Workflow
 
+- [ ] Classify direct review versus explicitly authorized review-and-fix; a reviewer subagent always stays read-only. Route implementation before entering the read-only steps below.
 - [ ] Step 1: Preflight ⚠️ REQUIRED
 - [ ] Step 2: Risk-Priority Audit (checks A–F) ⚠️ REQUIRED
 - [ ] Step 3: Present evidence-backed findings and coverage ⚠️ REQUIRED
@@ -121,7 +129,7 @@ Return the reviewed snapshot/content identity, baseline, covered paths and stagi
 
 ### 4. Report Self-Check
 
-Apply the self-check in [output-template.md](references/output-template.md). Return the read-only result. Do not edit, stage, commit, push, update remote metadata, reply, resolve threads, trigger review, or implement suggested fixes. The parent can apply authorized corrections and request a fresh review; this skill never orchestrates that loop.
+Apply the self-check in [output-template.md](references/output-template.md). Return the read-only result. Do not edit, stage, commit, push, update remote metadata, reply, resolve threads, trigger review, or implement suggested fixes. The parent can apply authorized corrections and request a fresh review; this reviewer role never orchestrates that loop.
 
 ## Constraints & Anti-Patterns
 

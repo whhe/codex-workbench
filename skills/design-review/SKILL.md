@@ -1,6 +1,6 @@
 ---
 name: "design-review"
-description: "Clarify consequential design choices in rounds, develop technical proposals or challenge an existing design before implementation through independent subagent perspectives, evidence-based cross-examination, revision and bounded re-review. Use for architecture choices, implementation approaches and technical plan reviews; implemented diffs belong to code review."
+description: "Clarify consequential design choices in rounds, develop technical proposals or challenge an existing design before implementation through independent subagent perspectives, evidence-based cross-examination, revision and independent re-review until valid in-scope findings are closed. Use for architecture choices, implementation approaches and technical plan reviews; implemented diffs belong to code review."
 ---
 
 IRON LAW: Bind every readiness verdict to the exact proposal version and completed independent review coverage; the author cannot approve their own proposal.
@@ -14,12 +14,12 @@ IRON LAW: Bind every readiness verdict to the exact proposal version and complet
 - [ ] (Propose mode) Compare independent alternatives and select a draft.
 - [ ] Freeze the draft and obtain independent reviews from every required perspective.
 - [ ] Reconcile evidence, cross-examine material disputes and record dispositions.
-- [ ] Revise within scope and independently re-review material changes.
+- [ ] When revision is authorized, repeat revision and independent review until all valid in-scope findings are closed; otherwise return the read-only assessment.
 - [ ] Return the current proposal, verdict, coverage and unresolved risks.
 
 ## Scope and capabilities
 
-Use **propose and review** when asked to develop an approach. Use **review existing** when supplied a design to assess; identify the actual proposal before reviewing. A comparison request may end with a recommendation, but label it unreviewed if the review stages were not performed.
+Use **propose and review** when asked to develop an approach. Use **review existing** when supplied a design to assess; identify the actual proposal before reviewing. Proposing a solution includes the independent review/revision loop by default; users need not request that loop separately. Reviewing an existing proposal remains read-only unless revision is explicitly requested. A comparison request may end with a recommendation, but label it unreviewed if the review stages were not performed.
 
 This package is self-contained. Use available capabilities for source inspection, external research when needed, and native subagent delegation. It requires no other skill, provider, CLI, team runtime or state service. Select the host's actual delegation interface; never invent tool names or model availability. Inherit the available model unless the user or environment authorizes another selection. Same-model agents provide context independence, not cross-model diversity.
 
@@ -50,7 +50,7 @@ Investigate discoverable facts rather than asking the user to retrieve them. Ask
 
 When material owner decisions remain, use clarification.md to interview in rounds based on decision dependencies. Skip the interview when the relevant decisions are already settled. Keep this method inside the package; no external interview skill is required. During review, factual disputes remain evidence questions for reviewers; only genuine owner choices return to this interview path.
 
-Set the review budget before dispatch: default **three review cycles**, including the initial panel. One cycle reviews one frozen proposal version; cross-examination belongs to that cycle. Material revision consumes a new cycle. This is a bound on work, not a passing threshold. Honor stricter host or repository gates; never use this budget to bypass them. User-requested budget changes must remain explicit.
+Set any explicit user review budget before dispatch. By default there is no fixed cycle limit: when revision is authorized, continue until the latest complete independent review finds no new valid in-scope findings, all earlier valid in-scope findings are closed, and applicable validation passes. One cycle reviews one frozen version, including cross-examination; material revision starts another cycle. Keep the finite phase deadlines and work-item attempt limits below. If repeated findings or failed attempts cannot make progress, report the concrete blocker rather than resetting limits or claiming readiness. A read-only review may finish with findings; completion of its report is not proposal readiness. Honor explicit user limits and stricter host or repository gates.
 
 Before dispatching any child, also set a finite phase deadline and a work-item attempt limit. A phase is initial clarification investigation, alternative generation or one complete review cycle, including cross-examination and closure checks. Clarification investigation inside an already active phase consumes that phase's budget; use clarification.md for the initial phase's lifecycle. Choose and record a concrete allowance for automated elapsed time appropriate to the task and host; start it with the phase's first dispatch and track it across batches and worker waits. Default to **two attempts per logical work item** (initial dispatch plus one retry). Identify work items by fact question, proposal direction, review perspective or specific dispute/closure question within that phase; renaming a worker does not reset attempts.
 
@@ -90,7 +90,7 @@ Revise only the affected sections and their dependencies. In read-only mode, pre
 
 For material changes to architecture, behavior, scope, risk controls or validation, create a new immutable version and dispatch fresh reviewers covering the full required panel. Give them the full current proposal and original brief; ask for independent review before they see the old finding ledger. After that pass, provide the ledger for closure checks and examine revision-induced risks. Prior clean reviews cannot approve changed content.
 
-For purely editorial changes, compare versions and record why meaning is unchanged; preserve applicable independent coverage with that explanation. Any unresolved earlier material finding still prevents Ready. New scope or owner decisions return to the brief before dependent revision.
+For purely editorial changes, compare versions and record why meaning is unchanged; preserve applicable independent coverage with that explanation. Any unresolved earlier valid in-scope finding, including Minor, still prevents Ready. New scope or owner decisions return to the brief before dependent revision.
 
 ## 6. Verdict and delivery
 
@@ -100,10 +100,10 @@ Use one overall verdict, listing other outstanding conditions alongside it:
 | --- | --- |
 | Incomplete | Required capability, source evidence or independent coverage is missing, failed, stale or partial, including required cross-examination or closure checks still pending |
 | Needs decision | Coverage is sufficient to identify a material owner choice, but that choice remains unresolved |
-| Needs revision | Confirmed Blocker or Major findings remain in the current proposal |
-| Ready | Required coverage is complete for the current version; material questions and all Blocker/Major findings are resolved |
+| Needs revision | Any confirmed valid in-scope finding remains, including Minor |
+| Ready | Required independent coverage is complete for the current version; no new valid in-scope findings remain, all earlier valid in-scope findings are closed, material questions are resolved and applicable validation passes |
 
-If several conditions apply, use the first applicable row and retain all known findings. Owner acceptance of a known material risk is an explicit decision, not a technical fix: report the acceptance and residual finding and keep **Needs revision** unless independent reassessment supports lowering its severity. The final allowed cycle may return Ready when its conditions are met. If the budget ends with outstanding conditions, return the best current proposal with the corresponding non-Ready verdict and next required action. No automatic extension or execution handoff.
+If several conditions apply, use the first applicable row and retain all known findings. Owner acceptance of a known risk is an explicit decision, not a technical fix: report the acceptance and residual finding and keep **Needs revision** while the finding remains valid and in scope. Lowering severity alone does not close a finding. If an explicit user budget or phase limit ends with outstanding conditions, return the best current proposal with the corresponding non-Ready verdict and next required action. Do not extend exhausted limits or hand off to implementation automatically.
 
 Deliver proportionately:
 
@@ -117,7 +117,7 @@ Deliver proportionately:
 
 - [ ] Every required perspective reviewed the current version, or the result is explicitly Incomplete.
 - [ ] Material owner answers are recorded; unanswered or deferred choices have not become assumptions or approval.
-- [ ] Every accepted material finding is actually resolved in that version or remains outstanding.
+- [ ] Every valid in-scope finding, including Minor, is actually closed in that version or remains outstanding; optional suggestions are listed separately.
 - [ ] Rejected material findings have independently checked reasons; unresolved disputes and owner questions remain visible.
 - [ ] No stale version, failed worker, cycle limit or suggested-only fix was treated as approval.
 - [ ] Source edits and output locations match authorization; no implementation or publication was inferred.

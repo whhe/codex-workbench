@@ -1,6 +1,6 @@
 ---
 name: "coding-workflow"
-description: "Execute coding tasks from implementation and debugging through verification, Git operations, and GitHub/GitLab issue or PR/MR collaboration. Use for code changes, commits and pushes, contribution drafting, or resolving review feedback. Select suitable specialist skills at each stage and load only relevant modules."
+description: "Execute coding tasks from implementation and debugging through verification, Git operations, and GitHub/GitLab issue or PR/MR collaboration. Use for code changes, commits and pushes, contribution drafting, or resolving review feedback. Implementation includes independent plan review and a review/fix loop until valid in-scope issues are closed. Select suitable specialists and load only relevant modules."
 ---
 
 IRON LAW: Execute only the authorized task path, resolve material uncertainty before dependent actions, and require a clean independent subagent review before completing or committing code changes.
@@ -15,8 +15,10 @@ IRON LAW: Execute only the authorized task path, resolve material uncertainty be
 - [ ] At each task stage, check for suitable specialist skills and prefer them when they fit the authorized work.
 - [ ] Before code changes, pass the independent plan review/fix gate in planning.md.
 - [ ] Implement, draft, collect or perform Git operations within that path's authority, keeping each change tied to the overall goal.
-- [ ] For code changes, pass the single independent subagent review/fix gate before completion or commit.
+- [ ] For code changes, repeat the single independent subagent review/fix gate until all valid in-scope issues are closed and required checks pass, before completion or commit.
 - [ ] Read back consequential effects and report actual verification, pending decisions and limitations.
+
+Implementation requests include both independent gates and their review/fix loops by default; a short request needs no extra instruction to iterate. Use planning.md and precommit-review.md as the single sources of those procedures. Read-only questions and content-only work retain their existing routing.
 
 ## Shared Execution Discipline
 
@@ -97,7 +99,7 @@ All module paths below are relative to this skill. Load the complete selected mo
 | [redaction.md](references/redaction.md) | Pasting machine output in contribution content |
 | [task-storage.md](references/task-storage.md) | Persisting/resuming records, ledgers, evidence or recovery artifacts |
 | [risk-policy.json](references/risk-policy.json) | Classifying implementation or execution risk; optional router uses this policy |
-| [runtime.md](references/runtime.md) | Structured record/evidence/registry/gate tooling or runtime changes |
+| [runtime.md](references/runtime.md) | Skill behavior verification, structured record/evidence/registry/gate tooling or runtime changes |
 | [browser-verification-fallback.md](references/browser-verification-fallback.md) | Relevant browser verification cannot use the preferred session |
 | [acceptance-references.json](references/acceptance-references.json) | Optional governed registry template; copy to external storage before filling |
 | [acceptance-references.schema.json](references/acceptance-references.schema.json) | Validating/extending the optional registry |
