@@ -34,9 +34,15 @@ Ask for:
 
 A failed worker is missing exploration, not evidence that its alternative is inferior. Retry only within the coordinator's established work-item attempt limit and phase deadline; otherwise report incomplete comparison. Do not claim a completed multi-proposal process if fewer than two independent proposals returned; useful drafts can still be reviewed within the established review budget, with the requested exploration gap retained in the overall coverage.
 
+## Necessity and change location
+
+For every proposed change, identify the acceptance condition or evidenced current problem it serves, its durable benefit, and what fails or becomes materially worse if omitted. Weigh that benefit against implementation, maintenance and delivery costs. Remove additions with insufficient benefit; completeness, symmetry, speculative reuse or future-proofing alone do not justify them. Keep required correctness, compatibility and validation even when they cost more.
+
+For cross-project alternatives, compare technically viable change locations using evidenced ownership, coordination, release and regression-validation costs. When the same requirements can be met in more flexible projects, prefer concentrating changes there and avoiding or minimizing edits to costly shared projects. Explain why each remaining shared-project change cannot reasonably be avoided. Infer relevant preferences from established constraints, but never infer release costs from project size or contributor count alone. Ask through the entrypoint's Grilling path when missing costs or owner priorities could change the recommendation. Keep the rationale proportional: a few sentences may suffice; no mandatory scoring system is needed.
+
 ## Select a draft
 
-Compare alternatives against acceptance criteria, interface complexity, change locality, delivery cost, failure exposure and evidence strength. State why the recommendation wins and what would make another option preferable. Combine elements only after checking that their assumptions and interfaces are compatible.
+Compare alternatives against acceptance criteria, interface complexity, change locality, delivery cost, failure exposure and evidence strength. State why the recommendation wins and what would make another option preferable. Before combining elements, verify that their assumptions and interfaces are compatible. Apply Necessity and change location before selection and after combining alternatives; combining compatible elements still requires a justified benefit for each addition.
 
 Write a right-sized proposal a reviewer can assess independently: problem and success criteria, scope, considered alternatives, recommended design and rationale, relevant interfaces/state flow, delivery sequence, validation, risks/recovery and open decisions. Reference original evidence. Use exact paths only when inspected; label illustrative paths and predictions.
 

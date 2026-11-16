@@ -21,7 +21,7 @@ IRON LAW: Bind every readiness verdict to the exact proposal version and complet
 
 Use **propose and review** when asked to develop an approach. Use **review existing** when supplied a design to assess; identify the actual proposal before reviewing. Proposing a solution includes the independent review/revision loop by default; users need not request that loop separately. Reviewing an existing proposal remains read-only unless revision is explicitly requested. A comparison request may end with a recommendation, but label it unreviewed if the review stages were not performed.
 
-This package is self-contained. Use available capabilities for source inspection, external research when needed, and native subagent delegation. It requires no other skill, provider, CLI, team runtime or state service. Select the host's actual delegation interface; never invent tool names or model availability. Inherit the available model unless the user or environment authorizes another selection. Same-model agents provide context independence, not cross-model diversity.
+This package is self-contained. Use available capabilities for source inspection, external research when needed, and native subagent delegation. It requires no provider, CLI, team runtime or state service; the conditional Grilling dependency below has a direct-question fallback. Select the host's actual delegation interface; never invent tool names or model availability. Inherit the available model unless the user or environment authorizes another selection. Same-model agents provide context independence, not cross-model diversity.
 
 Use fresh-context children for independent work. Give each only the stage contract and raw inputs it needs, not the entire skill or authoring conversation. Workers return to the coordinator, remain read-only, and do not spawn children or contact the user. The coordinator alone owns drafting, user questions and reconciliation. Batch work to fit available slots; wait for completion and release finished workers where the host requires it. Never share first-pass findings with reviewers still performing their first pass.
 
@@ -42,13 +42,14 @@ Review existing is read-only by default: return suggested revisions in the respo
 Inspect relevant requirements, repository instructions, affected interfaces and existing decisions. Build a shared brief containing:
 
 - Objective, observable success criteria, scope and exclusions.
+- For cross-project work, known ownership, coordination, release and regression-validation constraints and their sources; unresolved decision-changing costs remain questions.
 - Constraints and evidence locators; distinguish facts, assumptions and predictions.
 - Material owner decisions, unknown facts and the decisions depending on them.
 - Available source material, permitted actions and artifact destination if any.
 
 Investigate discoverable facts rather than asking the user to retrieve them. Ask about missing owner decisions before choosing a dependent design. Continue independent work, keeping unresolved branches explicitly pending. A reviewer returns questions to the coordinator; silence is not an answer. Record inaccessible evidence as a limitation, not a verified premise.
 
-When material owner decisions remain, use clarification.md to interview in rounds based on decision dependencies. Skip the interview when the relevant decisions are already settled. Keep this method inside the package; no external interview skill is required. During review, factual disputes remain evidence questions for reviewers; only genuine owner choices return to this interview path.
+When material owner decisions remain, use clarification.md to interview in rounds based on decision dependencies. Skip the interview when the relevant decisions are already settled. For material uncertainty about intent, scope, acceptance or tradeoffs that source inspection cannot settle, use `grilling` from the available catalog at this clarification stage. Supply the brief, evidence, open decisions and affected proposal sections; incorporate answers and pending questions through clarification.md. Use Grilling as a bounded clarification method under this workflow's scope, completion and authorization rules: explicit answers that settle the relevant decisions complete this interview; continue already-authorized work without a second blanket consensus or plan-approval request. Confirm the specific interpretation only when an answer remains ambiguous. If unavailable, report the limitation and ask directly using clarification.md; clarification remains required. Keep its interview within the current objective, with no implementation or publication authority. Reviewers return questions to the coordinator rather than invoking Grilling or delegating back into this workflow. During review, factual disputes remain evidence questions for reviewers; only genuine owner choices return to this interview path.
 
 Set any explicit user review budget before dispatch. By default there is no fixed cycle limit: when revision is authorized, continue until the latest complete independent review finds no new valid in-scope findings, all earlier valid in-scope findings are closed, and applicable validation passes. One cycle reviews one frozen version, including cross-examination; material revision starts another cycle. Keep the finite phase deadlines and work-item attempt limits below. If repeated findings or failed attempts cannot make progress, report the concrete blocker rather than resetting limits or claiming readiness. A read-only review may finish with findings; completion of its report is not proposal readiness. Honor explicit user limits and stricter host or repository gates.
 
@@ -115,6 +116,7 @@ Deliver proportionately:
 
 ## Delivery checks
 
+- [ ] Each retained change has a justified durable benefit under proposal.md; cross-project placement accounts for evidenced delivery costs.
 - [ ] Every required perspective reviewed the current version, or the result is explicitly Incomplete.
 - [ ] Material owner answers are recorded; unanswered or deferred choices have not become assumptions or approval.
 - [ ] Every valid in-scope finding, including Minor, is actually closed in that version or remains outstanding; optional suggestions are listed separately.

@@ -22,13 +22,19 @@ Implementation requests include both independent gates and their review/fix loop
 
 ## Shared Execution Discipline
 
-Apply the active global scope, evidence, cleanup and defer-or-ask rules. Preserve pending questions while independent work proceeds; when the next operation depends on an unresolved fact or user choice, ask before acting rather than guessing. Use project-config.md only for execution-environment or project-configuration work; routine content-only tasks do not load it.
+Apply the active global scope, evidence, cleanup and defer-or-ask rules. Preserve pending questions while independent work proceeds; when the next operation depends on an unresolved fact or user choice, ask before acting rather than guessing. When material uncertainty about intent, scope, acceptance or tradeoffs remains after inspecting authoritative context, use `grilling` from the available catalog to ask the user in dependency order. Supply the confirmed goal, evidence, open decisions and affected actions; carry its answers and pending questions back into this workflow. Load it only for that clarification stage. Use Grilling as a bounded clarification method under this workflow's scope, completion and authorization rules: explicit answers that settle the relevant decisions complete this interview; continue already-authorized work without a second blanket consensus or plan-approval request. Confirm the specific interpretation only when an answer remains ambiguous. If unavailable, report that limitation and ask directly; clarification remains required. Keep questioning within the current task and pause only dependent actions; it grants no implementation or publication authority. Reviewers return questions to the parent rather than invoking an interview or restarting this workflow. Use project-config.md only for execution-environment or project-configuration work; routine content-only tasks do not load it.
 
 ## Goal and Scope
 
 Before modifying task files, establish the intended outcome, observable acceptance conditions, authorized scope and relevant exclusions. If the goal is too broad to choose these (for example, “optimize the project”), inspect context read-only and ask the user for the missing priorities and details before making changes. Safely independent investigation may continue. A user-proposed implementation is input to the plan; surface conflicts with the goal or materially better alternatives rather than silently changing their requested approach.
 
 Keep this goal and scope as the reference throughout planning, implementation and every review round. Review findings are evidence to assess, not new user requirements. Resolve in-scope correctness issues; defer unrelated improvements and ask before dependent scope changes. User-confirmed goal changes update the reference explicitly.
+
+## Minimum Necessary Change
+
+For each planned change and review-driven addition, identify the acceptance condition or evidenced current problem it serves, the durable benefit, and the cost of leaving it out. Remove changes whose benefit does not justify implementation, maintenance and delivery costs. Prefer the smallest sufficient change; completeness, symmetry, speculative reuse and future-proofing alone do not justify expansion. Preserve required correctness, compatibility and verification.
+
+For cross-project work, compare viable change locations using inspected ownership, coordination, release cadence and regression-validation constraints, as well as technical fit. Prefer concentrating changes in projects with lower demonstrated coordination and release costs when they can meet the same acceptance and compatibility requirements. Explain why any change to a costly shared project is necessary and why a lower-cost location is insufficient. Project size or contributor count alone is not evidence of delivery cost. Resolve material unknowns through the clarification rule before selecting a dependent approach; keep the comparison proportional to the task.
 
 ## Task Phase and Authorization
 
@@ -107,6 +113,7 @@ All module paths below are relative to this skill. Load the complete selected mo
 
 ## Delivery Checks
 
+- [ ] Every retained change passes Minimum Necessary Change, including cross-project delivery costs where relevant.
 - [ ] Final changes and review-driven fixes still serve the overall goal and confirmed acceptance conditions; scope changes were resolved with the user.
 - [ ] Code changes passed the plan gate before edits; the reviewed plan remains applicable to the implemented approach.
 - [ ] Task phase and per-operation authority are explicit; implementation approval, Git publication confirmation and delegated PR/MR handling were not conflated.

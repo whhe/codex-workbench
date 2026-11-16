@@ -36,6 +36,10 @@ Review across the proposal to understand dependencies, while prioritizing the as
 
 When reports expose an unresolved material owner choice, the coordinator loads [clarification.md](clarification.md) to ask in dependency order and update the brief. Reviewers return the choice and affected requirements; they do not run the interview. Keep factual disputes in independent cross-examination rather than asking the owner to decide which technical claim is true.
 
+## Scope convergence
+
+Challenge every proposed addition against proposal.md's Necessity and change location, including remedies introduced by earlier rounds. Require a concrete acceptance gap or evidenced current harm before treating an expansion as necessary. Check whether removing an unnecessary element closes a finding more simply than adding machinery to support it. For cross-project work, challenge edits to costly shared projects when a lower-cost location could satisfy the same requirements. Include enough of this contract in each worker brief for independent review; do not make workers load the whole orchestration package.
+
 ## Finding contract
 
 Assign stable IDs, such as `COR-001`. Include:
