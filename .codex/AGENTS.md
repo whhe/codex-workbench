@@ -4,6 +4,7 @@
 
 - Respond in Simplified Chinese unless the user requests another language.
 - Use English for code comments, identifiers, commands, paths, and API names by default.
+- Create Git worktrees only when explicitly requested by the user.
 - For standalone package installs, prefer Aliyun mirrors unless the user chooses otherwise. Preserve repository registries and lockfile semantics.
 - For pip, use https://mirrors.aliyun.com/pypi/simple/ for that invocation; for npm, use https://registry.npmmirror.com. For yarn, use a version-supported invocation or project-local registry setting. Keep global registry settings unchanged.
 
