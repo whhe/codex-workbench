@@ -4,9 +4,7 @@ Use the project environment where available. The bundled runtime uses Python 3.1
 
 ## Storage
 
-Run `python <skill>/scripts/task_storage.py --repository <repository>`. It prints a persistent per-repository, per-task directory outside the repository. Preserve the printed location and task ID for resumption. Use `--task-id <id>` to reopen it. If allocation fails, ask the user for an external location; do not fall back to the working directory.
-
-The storage allocator verifies resolved paths, including symlinks. Other runtime tools accept explicit paths and rely on the caller to use the allocated task directory. Test fixtures may use external disposable temporary directories; retained task records use the persistent directory.
+Use the session directory supplied under the global or host storage instructions, following task-storage.md for record handling. Runtime tools accept explicit paths and rely on the caller to keep outputs in that directory. Test fixtures may use external disposable temporary directories.
 
 ## Optional risk routing
 
