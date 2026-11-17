@@ -21,6 +21,11 @@
       "source": "whhe/codex-workbench"
     },
     {
+      "name": "technical-writing",
+      "path": "skills/technical-writing",
+      "source": "whhe/codex-workbench"
+    },
+    {
       "name": "find-skills",
       "source": "vercel-labs/skills"
     },
@@ -63,6 +68,10 @@
     {
       "name": "teach",
       "source": "mattpocock/skills"
+    },
+    {
+      "name": "humanizer",
+      "source": "blader/humanizer"
     }
   ]
 }

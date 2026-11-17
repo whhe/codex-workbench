@@ -10,6 +10,7 @@ Reusable skills for everyday coding work, plus a portable bundle of my personal 
 | [coding-workflow](skills/coding-workflow/SKILL.md) | Implement features, debug problems, verify changes and handle Git or PR/MR work |
 | [design-review](skills/design-review/SKILL.md) | Clarify design choices, develop proposals and challenge them through independent subagent reviews |
 | [skill-conventions](skills/skill-conventions/SKILL.md) | Create and maintain clear, reusable skill packages |
+| [technical-writing](skills/technical-writing/SKILL.md) | Write shareable design documents, implementation plans and architecture analyses with reader review |
 
 ## Install a skill
 
@@ -20,6 +21,7 @@ npx skills add whhe/codex-workbench --skill code-review --global --agent codex
 npx skills add whhe/codex-workbench --skill coding-workflow --global --agent codex
 npx skills add whhe/codex-workbench --skill design-review --global --agent codex
 npx skills add whhe/codex-workbench --skill skill-conventions --global --agent codex
+npx skills add whhe/codex-workbench --skill technical-writing --global --agent codex
 ```
 
 Start a new Codex chat and try:
@@ -42,7 +44,13 @@ For a deeper design discussion:
 
 > Use $design-review to question the important design choices first, then propose and independently review an approach.
 
+To write a technical document:
+
+> Use $technical-writing to write a shareable design and implementation plan with minimal changes, clear parallel work boundaries, and acceptance criteria for developers and coding agents who have no context from this chat.
+
 Proposal and implementation requests include independent review/revision loops by default. `code-review` stays read-only unless you ask for fixes; its fix path requires `coding-workflow`.
+
+`technical-writing` requires `research` for new documents and substantial new type-specific sections, `humanizer` for the prose pass, and `grilling` for material owner questions. It also requires independent subagents before final delivery; missing capabilities leave the dependent stage incomplete.
 
 Installing a skill does not apply my personal environment settings. If installation or discovery fails, ask Codex to inspect the setup and explain what is missing. `coding-workflow` and `design-review` need subagent support for their independent reviews; ask Codex to check compatibility before relying on them.
 
