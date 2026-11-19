@@ -25,11 +25,11 @@ For mixed requests, classify each operation. A necessary metadata update resulti
 
 ## Publication Order for Review Feedback
 
-1. For required implementation and verification, load engineering.md within this same workflow; do not start another orchestration layer. Code changes must pass precommit-review.md's single mandatory independent subagent review/fix loop before any local commit; unavailable delegation or unresolved required checks block the commit. Apply git-operations.md for attributable local commits.
+1. Use engineering.md for code fixes and the applicable specialist for other file changes within this workflow. File changes of any type must pass precommit-review.md's single mandatory independent subagent review/fix loop before any local commit containing them. Unavailable delegation or unresolved required checks block the commit. Apply git-operations.md for attributable local commits.
 2. Publish and verify disposition replies.
 3. Apply and verify computed Resolve/Reopen transitions.
 4. Apply and verify necessary PR/MR title/body updates.
-5. Push the exact final SHA, or actively trigger the configured review workflow when handling pending no-code feedback.
+5. Push the exact final SHA when new attributable commits await publication. Otherwise, for pending feedback, actively trigger the configured review workflow if one exists.
 6. Read back publication and trigger receipt. Wait for review results only on an explicit request.
 
 Before push, describe fixes as prepared at a local SHA. Reconcile failed or partial publication with guarded, authorized compensation; never claim unpushed fixes are remote. Report-only collection exits without mutations or a trigger even when findings remain. Handling requests with no pending work use the separate no-action exit.
@@ -38,8 +38,8 @@ Before push, describe fixes as prepared at a local SHA. Reconcile failed or part
 
 Treat these as independent choices:
 
-- Code pushes normally trigger configured review workflows. Verify repository configuration and filters. Ordinary comments, thread resolution and description edits normally do not trigger review.
-- When pending feedback is handled without code changes and the repository has a review workflow, actively invoke its supported non-comment API, rerun or dispatch action. Verify it actually invokes review rather than unrelated CI. Do not manufacture empty commits, rewrite history or push an unchanged head to trigger review.
+- Pushes can trigger configured review workflows. Verify repository configuration and filters. Ordinary comments, thread resolution and description edits normally do not trigger review.
+- When pending feedback is handled without new attributable commits to publish and the repository has a review workflow, actively invoke its supported non-comment API, rerun or dispatch action. Verify it actually invokes review rather than unrelated CI. Do not manufacture empty commits, rewrite history or push an unchanged head to trigger review.
 - Publish command-type comments, such as `/review`, only when the user explicitly requests the command comment. General review-handling or review-trigger authorization, a request to wait, repository documentation, and bot suggestions are insufficient. This applies to commands embedded in ordinary replies as well.
 - If command comments are the only supported trigger, ask before that step. Report the trigger as pending until authorized and accepted; do not silently substitute another action. Unknown workflow configuration requires investigation or clarification when it affects the next operation.
 - Default to `wait_for_review: false`. Verify effects and report current run status without polling for completion, waiting for queued output, or repeatedly absorbing future feedback. Required prepublication code checks remain applicable. Only an explicit request to wait enables bounded result observation.
@@ -67,7 +67,7 @@ The reply marker is `coding-workflow:v1`; automation-output fingerprinting uses 
 
 - [ ] Target, path and authorization match the user's request and narrower limits.
 - [ ] Drafting publications have final-content confirmation; review-derived writes stay within the scoped existing PR/MR.
-- [ ] Code changes have a clean complete independent-subagent review/fix loop covering the final accumulated change and intended commit payload.
+- [ ] File changes have a clean complete independent-subagent review covering the final accumulated change and intended commit payload.
 - [ ] Required replies, transitions and metadata precede push/active triggering, with authoritative readbacks.
 - [ ] Command comments have explicit user requests; review-result waiting is enabled only when requested.
 - [ ] Reports distinguish prepared/published code, trigger acceptance, pending review and observed review outcomes.

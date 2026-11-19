@@ -16,7 +16,7 @@ Follow narrower user restrictions. Do not infer handling authority from a report
 
 A provider read interface is sufficient for collection. Verify write capabilities only for the authorized handling path; no named CLI is mandatory when another suitable interface supplies the required capability. Complete pagination and exact provider identities remain mandatory.
 
-Contribution.md owns the authority matrix and publication order. The independent code gate is owned by precommit-review.md and is entered from the publication path for code changes, including local-only work; no named review skill is required. Command comments still require an explicit user request to publish them. Remote review-result waiting defaults to false; an active run does not authorize waiting or another trigger.
+Contribution.md owns the authority matrix and publication order. The publication path applies planning.md and precommit-review.md to file changes of any type, including local-only work. Replies, metadata updates and thread transitions alone use the existing publication checks. Command comments still require an explicit user request to publish them. Remote review-result waiting defaults to false; an active run does not authorize waiting or another trigger.
 
 ## Phase References
 
@@ -25,5 +25,5 @@ All paths are relative to this directory. Load each phase only at its trigger; l
 | File | When to load |
 |---|---|
 | [review-collection.md](review-collection.md) | All feedback requests: read-only preflight, complete collection, identity/revision rules, triage and report/no-action exits |
-| [review-publication.md](review-publication.md) | Authorized feedback handling has pending work: execution, code gate, commits, guarded publication, recovery and effect verification |
+| [review-publication.md](review-publication.md) | Authorized feedback handling has pending work: execution, file change review, commits, guarded publication, recovery and effect verification |
 | [review-waiting.md](review-waiting.md) | User explicitly requests waiting for remote review results; read-only intent still prohibits mutations |

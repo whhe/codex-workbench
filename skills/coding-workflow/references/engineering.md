@@ -4,9 +4,9 @@ Use this module only for implementation/debugging or verification of code behavi
 
 ## Before implementation
 
-Establish the goal and scope under the entrypoint before modifications. Read planning.md and pass its independent plan review gate before editing source, scripts or tests. It has the same trigger scope as precommit-review.md, regardless of risk or whether new tests are needed. If a contribution or review task introduces code changes, enter this gate before those changes too.
+Establish the goal and scope under the entrypoint before modifications. Pass planning.md before editing and use precommit-review.md on the result. Both gates cover every type of file change, including changes introduced during contribution and review-feedback tasks.
 
-If the target belongs to an existing Git checkout, load git-operations.md and satisfy its applicable pre-edit branch/ownership/synchronization checks before source edits; do not postpone them until a commit or push. These preparatory checks do not authorize publication or change the task phase. Keep existing PR/MR head/ref constraints and unrelated work intact. For a non-Git target, branch checks are not applicable; do not initialize Git merely to satisfy this preflight.
+If the target belongs to an existing Git checkout, load git-operations.md and satisfy its applicable pre-edit branch and synchronization checks before source edits; do not postpone them until a commit or push. These preparatory checks do not authorize publication or change the task phase. Keep existing PR/MR head/ref constraints and unrelated work intact. For a non-Git target, branch checks are not applicable; do not initialize Git merely to satisfy this preflight.
 
 ## Risk and effort
 

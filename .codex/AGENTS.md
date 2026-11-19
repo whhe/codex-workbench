@@ -14,9 +14,9 @@
 - Before acting and at each meaningful task stage, scan available skill descriptions, match the actual intent, and prefer applicable specialists. Reassess when the task changes rather than before each repeated tool call.
 - Load only the selected skill's current SKILL.md and its applicable references, once per task unless they change. Do not bulk-load skills, infer instructions from memory, or omit required matches to satisfy a numeric limit. Briefly state which skill you are using and why.
 - Load process guidance before implementation guidance when both apply. Follow required gates; adapt optional guidance to the task's risk. User instructions take precedence over skill guidance.
-- Use coding-workflow for implementation/debugging, Git mutations, issue/PR/MR content operations, and review-feedback handling. Use skill-conventions when creating, editing or reviewing a skill package.
+- Use coding-workflow for changes to code, docs, skills, configuration, assets and other deliverables, and for debugging, Git mutations and issue/PR/MR work. Use skill-conventions when creating, editing or reviewing a skill package.
 - Resolve specialists from the available catalog. A missing optional specialist permits direct execution only if the required capability and checks remain available. Explicitly requested or otherwise required skills must not be silently skipped; report missing prerequisites.
-- Keep task-specific procedures in skills and load their modules on demand. No named review skill is mandatory; code changes require the independent plan review gate before edits and code review gate before completion/commit in coding-workflow. Avoid circular orchestration.
+- Keep task-specific procedures in skills and load their modules on demand. No named review skill is mandatory; follow coding-workflow's independent plan and change review gates for all types of file changes. Avoid circular orchestration.
 
 ## Task execution
 

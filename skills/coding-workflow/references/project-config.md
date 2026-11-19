@@ -12,4 +12,4 @@ Keep environment-specific values in .env rather than hardcoding them; use the pr
 
 ## New Project Scaffolding
 
-Only when creating a project from scratch within the user's request, initialize Git if needed, add stack-appropriate ignore rules including .env, and provide the formatter/configuration appropriate to that project. Prepare the initial attributable commit under git-operations.md and the precommit-review.md gate for code changes. Scaffolding does not waive user limits such as do-not-commit or local-only and does not authorize a remote push to an unverified target.
+When creating a project from scratch within the user's request, pass planning.md before creating or editing scaffold files. Initialize Git if needed, add stack-appropriate ignore rules including .env, and provide the formatter/configuration appropriate to that project. Use precommit-review.md on the result and prepare any initial attributable commit under git-operations.md. Scaffolding does not waive user limits such as do-not-commit or local-only and does not authorize a remote push to an unverified target.
