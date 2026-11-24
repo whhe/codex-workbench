@@ -1,11 +1,11 @@
 ---
-name: "design-review"
-description: "Clarify consequential design choices in rounds, develop technical proposals or challenge an existing design before implementation through independent subagent perspectives, evidence-based cross-examination, revision and independent re-review until valid in-scope findings are closed. Use for architecture choices, implementation approaches and technical plan reviews; implemented diffs belong to code review."
+name: "implementation-design"
+description: "Develop or revise a concrete architecture, feature, or migration design and independently review it for implementation readiness. Use also to assess an existing software proposal, including an early draft, for gaps before implementation."
 ---
 
 IRON LAW: Bind every readiness verdict to the exact proposal version and completed independent review coverage; the author cannot approve their own proposal.
 
-# Design Review
+# Implementation Design
 
 ## Workflow
 
@@ -20,7 +20,7 @@ IRON LAW: Bind every readiness verdict to the exact proposal version and complet
 
 ## Scope and capabilities
 
-Use **propose and review** when asked to develop an approach. Use **review existing** when supplied a design to assess; identify the actual proposal before reviewing. Proposing a solution includes the independent review/revision loop by default; users need not request that loop separately. Reviewing an existing proposal remains read-only unless revision is explicitly requested. A comparison request may end with a recommendation, but label it unreviewed if the review stages were not performed.
+Use **propose and review** when asked to develop an implementable software design. Use **review existing** when supplied a design to assess; identify the actual proposal before reviewing. Open-ended discussions about goals, capabilities, or directions can use an exploratory analysis capability. Proposing a design includes the independent review/revision loop by default; users need not request that loop separately. Reviewing an existing proposal remains read-only unless revision is explicitly requested. A comparison request may end with a recommendation, but label it unreviewed if the review stages were not performed. Route review of implemented changes to code review.
 
 This package is self-contained. Use available capabilities for source inspection, external research when needed, and native subagent delegation. It requires no provider, CLI, team runtime or state service; the conditional Grilling dependency below has a direct-question fallback. Select the host's actual delegation interface; never invent tool names or model availability. Inherit the available model unless the user or environment authorizes another selection. Same-model agents provide context independence, not cross-model diversity.
 
@@ -28,7 +28,7 @@ Use fresh-context children for independent work. Give each only the stage contra
 
 If delegation is unavailable, continue useful drafting or explicitly labeled self-review and return **Incomplete** for the independent review. A failed or partial required reviewer leaves coverage incomplete; retry only within both the work-item attempt limit and phase deadline established below, or report the gap. Never replace a missing independent reviewer with the author's approval.
 
-Review existing is read-only by default: return suggested revisions in the response. A request to create or revise a proposal authorizes those document changes at the requested destination, not implementation or publication. Honor narrower restrictions. Use chat when no file is needed; for authorized files follow repository or user destinations. Keep incidental worker logs outside the repository. Do not change code, install dependencies, commit, publish or send external messages as a side effect of this skill. A readiness verdict adds no execution authority.
+Keep the source proposal read-only in review-existing mode unless revision is authorized. Return the result in chat or use the document handoff below for a requested artifact. Apply the repository's file-edit workflow when writing to a repository. Honor narrower restrictions and keep incidental worker logs outside the repository. Implementation, publication, and external communication require their own authority. A readiness verdict adds no execution authority.
 
 ## Load only the current stage
 
@@ -74,6 +74,8 @@ In propose mode, use proposal.md to dispatch two independent alternatives, or th
 
 Assign an immutable version such as `v1` to the complete draft and brief. Preserve its text or capture a content digest when files are available. Include the rationale and rejected alternatives in the proposal itself. Record the exact requirement/source versions used where obtainable. If an input changes during review, invalidate affected coverage and review the new snapshot; unrelated results may remain diagnostic evidence, not approval of the new version.
 
+Prepare the proposal for implementation handoff. Give a developer the relevant code or system context, affected components and behavior, interface or data changes, dependencies and sequence, and observable acceptance checks where applicable. Resolve facts and owner decisions that could change the design. An implementer can make routine local choices within the design's constraints.
+
 ## 3. Independent panel
 
 Read review.md. Default to three separate fresh reviewers:
@@ -111,7 +113,7 @@ Use one overall verdict, listing other outstanding conditions alongside it:
 | Incomplete | Required capability, source evidence or independent coverage is missing, failed, stale or partial, including required cross-examination or closure checks still pending |
 | Needs decision | Coverage is sufficient to identify a material owner choice, but that choice remains unresolved |
 | Needs revision | Any confirmed valid in-scope finding remains, including Minor |
-| Ready | Required independent coverage is complete for the current version; no new valid in-scope findings remain, all earlier valid in-scope findings are closed, material questions are resolved and applicable validation passes |
+| Ready | A developer can implement from the current proposal and its cited materials without obtaining additional facts or decisions that could change the design. Required independent coverage is complete, all valid in-scope findings are closed and applicable validation passes. |
 
 If several conditions apply, use the first applicable row and retain all known findings. Owner acceptance of a known risk is an explicit decision, not a technical fix: report the acceptance and residual finding and keep **Needs revision** while the finding remains valid and in scope. Lowering severity alone does not close a finding. If an explicit user budget or phase limit ends with outstanding conditions, return the best current proposal with the corresponding non-Ready verdict and next required action. Do not extend exhausted limits or hand off to implementation automatically.
 
@@ -122,6 +124,10 @@ Deliver proportionately:
 3. Panel perspectives, actual independent workers/model diversity, reviewed versions, cycle count and coverage gaps.
 4. Findings and dispositions, including unresolved disputes, owner decisions and residual risks.
 5. Changes made or suggested and the next action needed, if any.
+
+When a document coordinator requests a readiness assessment, assess the supplied proposal in review-existing mode. Revise the candidate only within the design revision scope passed by the coordinator. Editing the source proposal requires authority for that specific source. Return the assessed proposal or immutable locator, its version, the reviewed requirement and evidence versions, verdict, findings, and actual coverage to the coordinator for delivery.
+
+When this workflow owns the user request and the user wants a standalone document, resolve an applicable technical document-writing capability from the catalog at delivery. Pass the assessed proposal or immutable locator, its version, the reviewed requirement and evidence versions, verdict, findings, coverage, and authorized destination and edit scope. A design for direct implementation requires Ready. An explicitly requested draft can carry open items, and a review report can carry any verdict. If the writing capability is unavailable or document delivery is blocked, return the design verdict in chat and identify the missing deliverable.
 
 ## Delivery checks
 

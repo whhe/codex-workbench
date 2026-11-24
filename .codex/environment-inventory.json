@@ -11,8 +11,13 @@
       "source": "whhe/codex-workbench"
     },
     {
-      "name": "design-review",
-      "path": "skills/design-review",
+      "name": "implementation-design",
+      "path": "skills/implementation-design",
+      "source": "whhe/codex-workbench"
+    },
+    {
+      "name": "problem-analysis",
+      "path": "skills/problem-analysis",
       "source": "whhe/codex-workbench"
     },
     {

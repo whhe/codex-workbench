@@ -1,6 +1,6 @@
 ---
 name: "technical-writing"
-description: "Write and revise shareable technical documents, including design proposals, implementation plans, architecture analyses, and engineering reports. Use when a document needs a clear purpose, searchable sections, supported claims, reader-specific review, and enough context for people or coding agents to use it independently."
+description: "Create or revise a requested standalone technical document, such as a Markdown file or Feishu Doc. Load for delivery when the content is ready for the requested document or draft. Begin with analysis or design when needed."
 ---
 
 IRON LAW: Give the intended readers the information they need to understand, decide, or act, with supported claims and clear boundaries; keep private working context out of the document.
@@ -10,11 +10,28 @@ IRON LAW: Give the intended readers the information they need to understand, dec
 ## Workflow
 
 - [ ] Identify the document type, audience, purpose, scope, and destination.
+- [ ] Check the source status against the intended use of the document.
 - [ ] Apply the research dependency when its drafting trigger applies.
 - [ ] Draft from verified subject evidence, using headings that support selective reading.
 - [ ] Check relevance, privacy, and the necessity of proposed changes; apply humanizer to the prose.
 - [ ] Freeze the candidate, obtain independent reader reviews, fix valid findings, and re-review.
 - [ ] Verify the delivered content, links, navigation, and rendered layout.
+
+## When to load
+
+Start here when the user asks to create or revise a standalone technical document from supplied decisions, evidence, or an existing draft. Use the corresponding content workflow for chat analysis or design, including responses formatted in Markdown.
+
+For a request that combines analysis or design with document delivery, start with the content workflow. Load this skill when the findings or decisions needed by the document are ready, or when the user requests a draft that can carry unresolved items. Carry forward the source evidence, settled decisions, open items, and scope.
+
+## Source status and handoff
+
+For a document presenting a software design for direct implementation or asserting current implementation readiness, establish readiness before drafting the final artifact. Recheck before delivery that the candidate preserves the reviewed design and that the requirements and evidence supporting the verdict still apply. Formatting and editorial changes can retain coverage after a comparison confirms the technical meaning. Substantive changes to the design, implementation constraints, or acceptance criteria and changes to the underlying requirements or evidence can invalidate coverage even after drafting or reader review.
+
+When readiness evidence is missing, stale, or invalidated, resolve a software design assessment capability from the catalog. Prefer `implementation-design` when the earlier `design-review` is also installed. Pass the exact candidate or immutable locator, relevant source versions, existing review evidence, and the authorized revision scope. Default to assessment of the supplied candidate. Distinguish permission to edit the deliverable, permission to revise design decisions, and permission to modify the source proposal. Request the assessed proposal and version, reviewed inputs, verdict, findings, and coverage back in this workflow. The document coordinator owns delivery. If the capability is unavailable or the candidate remains below Ready, report the blocker to implementation-ready delivery.
+
+When recording an existing decision, assessment, or explicit draft, preserve the version, source status, and material open items. Attribute a prior verdict to the version and evidence it assessed. Route substantive corrections to the content workflow within the authorized revision scope. If a correction exceeds that scope, report it with the source status in a faithful record, or identify it as a blocker when it prevents the requested use.
+
+Select the destination capability when creating or updating the requested artifact. Verify the result at the requested destination and return its path or link. If delivery is blocked, state what is missing and report the current draft or source status.
 
 ## Dependencies and authority
 
@@ -22,7 +39,7 @@ Resolve these skills through the available catalog, including namespaced variant
 
 | Capability | When required | Inputs and output | If unavailable |
 | --- | --- | --- | --- |
-| research | Before a new document or substantial new type-specific section; reuse relevant verified findings within the task | Type, reader task, and constraints; returns primary-source findings with citations | Report the missing capability and block dependent drafting |
+| research | The user requests research, or required source evidence for a material claim or document convention is missing; reuse relevant verified findings | Specific evidence gap, reader task, and constraints; returns primary-source findings with citations | Report the missing capability and block dependent drafting |
 | grilling | A material question about intent, scope, acceptance, or a tradeoff cannot be resolved from sources | Known facts, the open decision and its dependent work; returns explicit answers or a defined deferral | Report the gap and keep dependent work blocked |
 | humanizer | The prose pass before reader review, and after substantive rewrites | Current draft, intended voice and supported facts; returns final prose without editing commentary | Report the gap; do not claim the prose pass is complete |
 | Independent subagents | Reader review before final delivery | Frozen draft, intended readers, relevant sources and task boundaries; returns findings to the coordinator | Keep a working draft and report the coverage gap; do not substitute author approval |
@@ -35,7 +52,7 @@ Use grilling as bounded clarification within the agreed document task. Pass only
 
 Read the current document in full before revising it. Distinguish agreed requirements, descriptions of the observed system, and historical decisions, including within mixed documents. An implementation mismatch does not authorize weakening a requirement or rewriting an accepted decision; report the discrepancy. Update descriptive claims from current evidence, and change agreed or historical decisions only within the authorized scope. Identify what readers need to understand, decide, or execute. Preserve the user's confirmed choices and later corrections. Ask material owner questions promptly through grilling; investigate facts the sources can establish. Respect explicitly deferred questions, record their blocking scope, and continue independent work. Do not infer an answer from silence.
 
-When research is required, study current primary guidance and applicable examples for the actual document type, separately from factual claims about the subject. A template cannot establish what a system does.
+When research is required, select primary sources for the actual question. Use subject evidence for factual claims and primary guidance for document conventions. A template cannot establish what a system does.
 
 | Reference | When to load |
 | --- | --- |
@@ -64,7 +81,7 @@ Research and reviews do not expand the task. Evaluate each suggested remedy for 
 
 Write for the intended audience, using the document's language. Keep facts, proposals, inference, and unresolved choices distinguishable. A planned check is not an executed result. Preserve uncertainty that changes a reader's decision or action.
 
-Keep authoring and review records outside the delivered content, including appendices, attachments, comments, and links to working records. This includes chat history, agent identities, draft-version banners, findings ledgers, reviewer lists, round counts, and review-status claims. Incorporate findings as corrected technical content. Retain technical rationale, code baselines, contract revisions, and unresolved conditions needed by readers. Include publication history when the document's purpose calls for it.
+Keep records of drafting and reviewing this document outside the delivered content, including appendices, attachments, comments, and working-record links. Incorporate document review findings as corrected content. For a requested assessment report, preserve its subject's verdict, evidence, findings, and coverage. Retain technical rationale, code baselines, contract revisions, and unresolved conditions needed by readers. Include publication history when the document's purpose calls for it.
 
 Remove credentials, session tokens, unnecessary personal data, private machine details, and unrelated sensitive content from prose, examples, diagrams, screenshots, metadata, and link query strings. Disclose only what the intended audience needs and is authorized to receive. If a sensitive value matters operationally, use a consistent placeholder and identify the approved configuration source; never reproduce the secret. Flag an unresolved disclosure question before sharing.
 
@@ -97,7 +114,7 @@ Before dispatch, freeze the complete candidate with an internal identifier or di
 
 Give fresh-context reviewers the same complete candidate without the authoring chat or other reviewers' findings. First ask each to complete a representative reader task using only the document and its declared companion artifacts: state a decision and its costs, explain a system flow, or locate an assignment's first action, inputs, output, and acceptance. Require answers with section references and explicit missing premises; reviewers must not invent missing context. Then provide the minimum source evidence needed for factual checks. Ask them to challenge missing context, unsupported claims, ambiguous boundaries, unnecessary changes, and realistic failure cases from their assigned reader's position. Each finding needs a location, evidence or a concrete counterexample, its impact, and the smallest correction. A finding quota is unnecessary.
 
-Collect every first-pass report before comparing findings. Resolve material owner questions through grilling. Accept evidence-backed findings, apply the smallest in-scope fixes, and record their disposition privately. Independently challenge material rejections or disputed claims; author reassurance and agreement counts do not settle them.
+Collect every first-pass report before comparing findings. Resolve material owner questions through grilling. Apply the smallest in-scope document fixes for evidence-backed findings and record their disposition privately. Apply the source status and handoff rules to findings about the underlying analysis or design. Independently challenge material rejections or disputed claims; author reassurance and agreement counts do not settle them.
 
 Review the revised complete candidate with fresh readers after changes to scope, behavior, interfaces, or acceptance; after their first pass, verify closure of earlier findings. For editorial fixes, verify meaning and retain applicable coverage with a recorded explanation. Continue until all valid in-scope findings are closed, questions blocking the agreed document purpose are resolved, and the current candidate has complete reader coverage. A proposal may present a choice for its intended decision maker, and explicitly deferred choices may remain open; identify the responsible role, resolution point, and execution they block. User acceptance of a known defect does not make it fixed.
 
@@ -106,7 +123,7 @@ If a deadline, attempt limit, missing capability, or a question blocking the agr
 ## Final checks
 
 - Can a reader identify the purpose and select useful sections without the chat?
-- Does every section serve the reader's understanding, decision, or action, with no authoring or review records in the text, appendices, attachments, comments, or working-record links?
+- Does every section serve the reader's understanding, decision, or action, with this document's production records kept private?
 - Are proposed changes necessary, scoped, prioritized, and tied to observable acceptance?
 - For execution, are ownership, parallel boundaries, dependencies, and handoff inputs clear and free of circular prerequisites?
 - Are facts supported, local paths portable, sensitive values removed, and operational placeholders consistent?
