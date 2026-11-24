@@ -72,8 +72,6 @@ Download or clone the complete repository, including hidden files, and open it i
 
 Codex follows the [merge guide](.codex/RESTORE.md) and handles the detailed checks, backups and installation steps. Follow its handoff if a restart or sign-in is needed. Credentials, chat history and machine-specific state are excluded; models and integrations may need separate setup.
 
-The merge preserves previously installed `design-review` copies. Use `implementation-design` for the current design workflow.
-
 ## Check or troubleshoot
 
 Open this repository in Codex and ask:
