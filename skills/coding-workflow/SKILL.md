@@ -17,7 +17,7 @@ IRON LAW: Execute only the authorized task path, resolve material uncertainty be
 - [ ] Before authoring file changes, pass the independent plan review/fix gate in planning.md.
 - [ ] Implement, draft, collect or perform Git operations within that path's authority, keeping each change tied to the overall goal.
 - [ ] Review every file change through precommit-review.md until all valid in-scope issues are closed and required checks pass, before completion or commit.
-- [ ] Read back consequential effects and report actual verification, pending decisions and limitations.
+- [ ] Read back consequential effects and [report the outcome](#records-and-reporting).
 
 Both independent gates apply to every type of authored file change, including documentation, skills, configuration and assets. Tasks with no file changes, including read-only work and issue/PR/MR content updates, skip the gates. Use planning.md and precommit-review.md as the single sources of the review procedures.
 
@@ -89,7 +89,11 @@ Integrate findings into the plan and verification, providing source locators to 
 
 ## Records and Reporting
 
-Load task-storage.md when creating or resuming workflow records, ledgers, evidence or recovery files in the selected session directory. Ordinary project outputs follow project conventions. Report changes, actual verification, pending decisions and limitations; never equate publication, review-trigger acceptance and a passing remote review. Remote review results are awaited only when explicitly requested; command comments require a separate explicit request.
+Load task-storage.md when creating or resuming workflow records, ledgers, evidence or recovery files in the selected session directory. Ordinary project outputs follow project conventions.
+
+Report changes, verification results, pending decisions, and limitations. Keep implementation summaries brief by default. Where relevant, explain material subagent findings and their disposition, likely impacts, and any remaining prerequisites for commit or deployment.
+
+Distinguish publication, acceptance of a review trigger, and a passing remote review. Wait for remote review results only when explicitly requested. Command comments require a separate explicit request.
 
 ## Modules: Load on Demand
 
