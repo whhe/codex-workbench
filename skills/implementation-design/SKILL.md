@@ -115,24 +115,24 @@ Use one overall verdict, listing other outstanding conditions alongside it:
 | Needs revision | Any confirmed valid in-scope finding remains, including Minor |
 | Ready | A developer can implement from the current proposal and its cited materials without obtaining additional facts or decisions that could change the design. Required independent coverage is complete, all valid in-scope findings are closed and applicable validation passes. |
 
-If several conditions apply, use the first applicable row and retain all known findings. Owner acceptance of a known risk is an explicit decision, not a technical fix: report the acceptance and residual finding and keep **Needs revision** while the finding remains valid and in scope. Lowering severity alone does not close a finding. If an explicit user budget or phase limit ends with outstanding conditions, return the best current proposal with the corresponding non-Ready verdict and next required action. Do not extend exhausted limits or hand off to implementation automatically.
+If several conditions apply, use the first applicable row and retain all known findings. Owner acceptance of a known risk is an explicit decision, not a technical fix: report the acceptance and residual finding and keep **Needs revision** while the finding remains valid and in scope. Lowering severity alone does not close a finding. If an explicit user budget or phase limit ends with outstanding conditions, deliver the best current proposal under the same verdict and reporting rules. Do not extend exhausted limits or hand off to implementation automatically.
 
 Deliver proportionately:
 
 1. Current proposal or link, immutable version, recommended approach and tradeoffs.
 2. Verdict and evidence supporting it; distinguish design assessment from executed experiments or implementation verification.
 3. Panel perspectives, actual independent workers/model diversity, reviewed versions, cycle count and coverage gaps.
-4. Findings and dispositions, including unresolved disputes, owner decisions and residual risks.
-5. Changes made or suggested and the next action needed, if any.
+4. Findings, dispositions and changes made or suggested, including unresolved disputes, owner decisions and residual risks.
+5. For Ready, give the next action if needed. For any non-Ready verdict, list every open readiness gap in the final reply, regardless of which verdict takes precedence. For each, name the missing evidence, review, decision or change, the concrete next action, and what would verify closure. State whose input or access is needed when it blocks that action. Include this list even when the proposal or review is delivered separately.
 
-When a document coordinator requests a readiness assessment, assess the supplied proposal in review-existing mode. Revise the candidate only within the design revision scope passed by the coordinator. Editing the source proposal requires authority for that specific source. Return the assessed proposal or immutable locator, its version, the reviewed requirement and evidence versions, verdict, findings, and actual coverage to the coordinator for delivery.
+When a document coordinator requests a readiness assessment, assess the supplied proposal in review-existing mode. Revise the candidate only within the design revision scope passed by the coordinator. Editing the source proposal requires authority for that specific source. Return the assessed proposal or immutable locator, its version, the reviewed requirement and evidence versions, and the delivery details above. Ask the coordinator to include the gap list in its final reply.
 
-When this workflow owns the user request and the user wants a standalone document, resolve an applicable technical document-writing capability from the catalog at delivery. Pass the assessed proposal or immutable locator, its version, the reviewed requirement and evidence versions, verdict, findings, coverage, and authorized destination and edit scope. A design for direct implementation requires Ready. An explicitly requested draft can carry open items, and a review report can carry any verdict. If the writing capability is unavailable or document delivery is blocked, return the design verdict in chat and identify the missing deliverable.
+When this workflow owns the user request and the user wants a standalone document, resolve an applicable technical document-writing capability from the catalog at delivery. Pass the same assessment and delivery details, plus the authorized destination and edit scope. A design for direct implementation requires Ready. An explicitly requested draft can carry open items, and a review report can carry any verdict. If the writing capability is unavailable or document delivery is blocked, report the assessment in chat and identify the missing deliverable.
 
 ## Delivery checks
 
 - [ ] Each retained change has a justified durable benefit under proposal.md; cross-project placement accounts for evidenced delivery costs.
-- [ ] Every required perspective reviewed the current version, or the result is explicitly Incomplete.
+- [ ] Every required perspective reviewed the current version, or the result is explicitly Incomplete. Every non-Ready reply pairs each open gap with a concrete action and a closure check.
 - [ ] Material owner answers are recorded; unanswered or deferred choices have not become assumptions or approval.
 - [ ] Every valid in-scope finding, including Minor, is actually closed in that version or remains outstanding; optional suggestions are listed separately.
 - [ ] Rejected material findings have independently checked reasons; unresolved disputes and owner questions remain visible.
